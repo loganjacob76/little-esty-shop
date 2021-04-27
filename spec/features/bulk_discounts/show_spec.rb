@@ -25,6 +25,8 @@ RSpec.describe 'bulk discount show page' do
     end
 
     it 'has a link to edit the discount' do
+      visit merchant_bulk_discount_path(@merchant, @discount)
+      
       expect(page).to have_link('Edit Bulk Discount')
     end
   end
