@@ -18,15 +18,15 @@ RSpec.describe 'bulk discounts show page' do
   end
 
   context 'you are on the bulk discounts show page' do
-    it 'has the name of the merchant' do
+    before :each do
       visit merchant_bulk_discounts_path(@merchant)
+    end
 
+    it 'has the name of the merchant' do
       expect(page).to have_content(@merchant.name)
     end
 
     it "has a list of the merchant's discounts and all their percentages and thresholds" do
-      visit merchant_bulk_discounts_path(@merchant)
-
       expect(page).to have_link(@discount1.name)
       expect(page).to have_link(@discount2.name)
 
@@ -35,6 +35,10 @@ RSpec.describe 'bulk discounts show page' do
 
       expect(page).to have_content(@discount1.quantity_threshold)
       expect(page).to have_content(@discount2.quantity_threshold)
+    end
+
+    it 'has a button to create a new bulk discount' do
+      expect(page).to have_link('New Bulk Discount')
     end
   end
 end
