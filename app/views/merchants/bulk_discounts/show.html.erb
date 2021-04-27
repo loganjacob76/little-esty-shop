@@ -1,4 +1,8 @@
+<%= render 'merchants/header', locals: {merchant_id: @merchant} %>
+
 <h1><%= @discount.name %></h1>
 
 <p>Quantity Threshold: <%= @discount.quantity_threshold %> items</p>
 <p>Percentage Discount: <%= @discount.percent_discount %>%</p>
+
+<%= link_to 'Edit Bulk Discount', edit_merchant_bulk_discount_path %>
