@@ -42,6 +42,10 @@ RSpec.describe 'bulk discounts show page' do
     end
 
     context 'you want to delete a bulk discount' do
+      before :each do
+        visit merchant_bulk_discounts_path(@merchant)
+      end
+
       it 'has a button to delete bulk discounts' do
         expect(page).to have_button('Delete')
       end
@@ -49,6 +53,7 @@ RSpec.describe 'bulk discounts show page' do
       it 'clicking the button deletes the specific discount' do
         first(:button, 'Delete').click
 
+        expect(current_path).to eq(merchant_bulk_discounts_path(@merchant))
         expect(page).to_not have_content(@discount1.name)
         expect(page).to have_content(@discount2.name)
       end
