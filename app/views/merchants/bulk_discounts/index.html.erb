@@ -1,1 +1,14 @@
-<h1><%= @merchant.name %> Discounts</h1>
+<%= render 'merchants/header', locals: {merchant_id: @merchant} %>
+
+<h1><%= @merchant.name %> Bulk Discounts</h1>
+
+<h3>Discounts</h3>
+<ul>
+  <% @merchant.bulk_discounts.each do |discount| %>
+    <li><%= link_to discount.name, merchant_bulk_discount_path(@merchant, discount) %>:</li>
+    <ul>
+      <li><%= discount.percent_discount %>% off</li>
+      <li>Need: <%= discount.quantity_threshold %> items</li>
+    </ul>
+  <% end %>
+</ul>

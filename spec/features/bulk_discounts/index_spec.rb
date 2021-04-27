@@ -26,9 +26,9 @@ RSpec.describe 'bulk discounts show page' do
 
     it "has a list of the merchant's discounts and all their percentages and thresholds" do
       visit merchant_bulk_discounts_path(@merchant)
-      
-      expect(page).to have_content(@discount1.name)
-      expect(page).to have_content(@discount2.name)
+
+      expect(page).to have_link(@discount1.name)
+      expect(page).to have_link(@discount2.name)
 
       expect(page).to have_content(@discount1.percent_discount)
       expect(page).to have_content(@discount2.percent_discount)
