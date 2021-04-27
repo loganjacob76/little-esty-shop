@@ -21,15 +21,15 @@
 <div class="customer">
   <h2>Customer:</h2>
   <ul>
-    <li><%= @invoice.customer.name %></li>
+    <li><%= @customer.name %></li>
   </ul>
 </div>
 
 <div class="show-items">
   <h2>Items on this Invoice:</h2>
     <ul>
-      <% @invoice_items.each do |item| %>
-      <li><%= item.name %>---<%= item.quantity_ordered %>---<%= number_to_currency(item.price_sold) %>---<%= item.status %></li>
+      <% @invoice.invoice_items.each do |invoice_item| %>
+      <li><%= invoice_item.item.name %>---<%= invoice_item.quantity %>---<%= number_to_currency(invoice_item.unit_price) %>---<%= invoice_item.status %></li>
       <% end %>
     </ul>
 
