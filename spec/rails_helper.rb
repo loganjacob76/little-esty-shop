@@ -45,6 +45,10 @@ RSpec.configure do |config|
     allow_any_instance_of(GitHubService).to receive(:get_collaborators).and_return(mock_collaborators)
     allow_any_instance_of(GitHubService).to receive(:get_repo_name).and_return(mock_repo)
     allow_any_instance_of(GitHubService).to receive(:get_pull_requests).and_return(mock_prs)
+
+    mock_holidays = [{name: 'Memorial Day', date: '2021-05-31'}, {name: 'Independence Day', date: '2021-07-05'}, {name: 'Labour Day', date: '2021-09-06'}]
+
+    allow_any_instance_of(NagerService).to receive(:get_next_holidays).and_return(mock_holidays)
   end
 
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
