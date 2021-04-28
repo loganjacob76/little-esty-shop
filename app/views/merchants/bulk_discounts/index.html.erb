@@ -15,3 +15,13 @@
 </ul>
 
 <%= link_to 'New Bulk Discount', new_merchant_bulk_discount_path %>
+
+<div id='holidays'>
+  <h3>Upcoming Holidays: </h3>
+  <% service = NagerService.new %>
+  <ul>
+    <% service.get_next_holidays.each do |holiday| %>
+      <li><%= holiday[:name] %>: <%= holiday[:date] %></li>
+    <% end %>
+  </ul>
+</div>
