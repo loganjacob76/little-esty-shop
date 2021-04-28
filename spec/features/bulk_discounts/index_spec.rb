@@ -40,6 +40,14 @@ RSpec.describe 'bulk discounts show page' do
     it 'has a button to create a new bulk discount' do
       expect(page).to have_link('New Bulk Discount')
     end
+    
+    it 'has a list of the next 3 US holidays' do
+      within '#holidays' do
+        expect(page).to have_content('Memorial Day: 2021-05-31') 
+        expect(page).to have_content('Independence Day: 2021-07-05') 
+        expect(page).to have_content('Labour Day: 2021-09-06')
+      end
+    end
 
     context 'you want to delete a bulk discount' do
       before :each do
