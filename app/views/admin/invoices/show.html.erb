@@ -20,7 +20,7 @@
 
     <p>Created on: <%= @invoice.created_at.strftime("%A, %B %d, %Y") %></p>
 
-    <p>Total Revenue: <%= number_to_currency(@invoice.total_revenue) %></p>
+    <p>Total Revenue: <%= number_to_currency(@invoice.net_profits) %></p>
 
     <h2>Customer:</h2>
     <div id='admin_invoice_customer'>
