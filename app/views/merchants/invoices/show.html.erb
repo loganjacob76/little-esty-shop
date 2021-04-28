@@ -29,8 +29,14 @@
   <h2>Items on this Invoice:</h2>
     <ul>
       <% @invoice.invoice_items.each do |invoice_item| %>
-      <li><%= invoice_item.item.name %>---<%= invoice_item.quantity %>---<%= number_to_currency(invoice_item.unit_price) %>---<%= invoice_item.status %></li>
+      <li><%= invoice_item.item.name %>---<%= invoice_item.quantity %>---<%= number_to_currency(invoice_item.unit_price) %>---<%= invoice_item.status %>---
+        <% discount = BulkDiscount.which_discount(invoice_item) %>
+        <% if discount.present? %>
+          <%= link_to discount.first.name, merchant_bulk_discount_path(@merchant, discount.first) %>
+        <% else %>
+          No discount
+        <% end %>
+      </li>
       <% end %>
     </ul>
-
 </div>
